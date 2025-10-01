@@ -7,4 +7,3 @@ class Carreras:
 
     def getNombre(self):
         return self.__nombre
-    
