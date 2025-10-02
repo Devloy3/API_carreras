@@ -1,4 +1,5 @@
 import mysql.connector
+from carreras import Carreras
 
 class DAOcarreras:
     
@@ -11,14 +12,14 @@ class DAOcarreras:
         )
 
         self.cursor = self.mydb.cursor()
-        self.nombre = nombre
+        self.nombre = Carreras(nombre)
 
     def crear_carrera(self):
-        self.cursor.execute('INSERT INTO carreras(nombre) VALUES (%s)', (self.nombre,))
+        self.cursor.execute('INSERT INTO carreras(nombre) VALUES (%s)', (self.nombre.getNombre(),))
         self.mydb.commit()
 
     def actualizar_carrera(self,nuevo_nombre):
-        self.cursor.execute('UPDATE carreras SET nombre= %s WHERE nombre=%s',(nuevo_nombre, self.nombre))
+        self.cursor.execute('UPDATE carreras SET nombre= %s WHERE nombre=%s',(nuevo_nombre, self.nombre.getNombre()))
         self.mydb.commit()
 
     def eliminar_carrera(self,nombre_eliminar):
