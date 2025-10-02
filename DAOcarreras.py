@@ -1,36 +1,36 @@
 import mysql.connector
 
 class DAOcarreras:
-    mydb = mysql.connector.connect(
-        host= "localhost",
-        user= "root",
-        paswoord= "123456",
-        database= "carreras"
-    )
-
-    cursor = mydb.cursor()
-
+    
     def __init__(self,nombre):
+        self.mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="123456",
+            database="carreras"
+        )
+
+        self.cursor = self.mydb.cursor()
         self.nombre = nombre
 
     def crear_carrera(self):
-        self.__class__.cursor('INSERT INTO carreras(nombre) VALUES (%)', (self.nombre))
-        self.__class__.mydb.commit()
+        self.cursor.execute('INSERT INTO carreras(nombre) VALUES (%s)', (self.nombre,))
+        self.mydb.commit()
 
     def actualizar_carrera(self,nuevo_nombre):
-        self.__class__.cursor('UPDATE carreras SET nombre= %s WHERE nombre=%s',(nuevo_nombre, self.nombre))
-        self.__class__.mydb.commit()
+        self.cursor.execute('UPDATE carreras SET nombre= %s WHERE nombre=%s',(nuevo_nombre, self.nombre))
+        self.mydb.commit()
 
     def eliminar_carrera(self,nombre_eliminar):
-        self.__class__.cursor('DELETE FROM carreras WHERE nombre=%s', (nombre_eliminar))
-        self.__class__.mydb.commit()
+        self.cursor.execute('DELETE FROM carreras WHERE nombre=%s', (nombre_eliminar,))
+        self.mydb.commit()
 
     def mostrar_carreras(self):
-        self.__class__.cursor('SELECT * FROM carreras')
-        resultado = self.__class__.cursor.fetchall()
+        self.cursor.execute('SELECT * FROM carreras')
+        resultado = self.cursor.fetchall()
         return resultado
     
-    
+
     
 
     
