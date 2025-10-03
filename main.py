@@ -15,7 +15,8 @@ def menu():
             print("3.Actualizar una carrera")
             print("4.Eliminar carreras")
             print("5.Mostrar la conexion a la base de datos")
-            print("5.Salir \n")
+            print("6.Cambiar la conexion de la base de datos")
+            print("7.Salir \n")
 
             opcion = int(input("Introduce una opcion:"))
         
@@ -35,17 +36,31 @@ def menu():
                 nombre_eliminar = input("Que nombre quieres eliminar:")
                 dao.eliminar_carrera(nombre_eliminar)
             elif opcion == 5: 
-                host_1 = dao.GetHost()
+                host_2 = dao.GetHost()
                 user_2 = dao.GetUser()
                 password_2 = dao.GetPassword()
                 database_2 = dao.GetDatabase()
                 print(f'''
-                      Host: {host_1}
+                      Host: {host_2}
                       User: {user_2}
                       Password: {password_2}
                       Database: {database_2}
                     ''')
             elif opcion == 6:
-                 break
+                print("Introduce los datos para cambiar la base de datos")
+                host_3 = input("Host:")
+                user_3 = input("User:")
+                password_3 = input("Password:")
+                database_3= input("Database:")
+                dao.setHost(host_3)
+                dao.setUser(user_3)
+                dao.setPassword(password_3)
+                dao.setDatabase(database_3)
+            elif opcion == 7:
+                print("Saliendo del progrmas ....")
+                break
+
+
+
 
 menu()
