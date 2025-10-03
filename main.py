@@ -1,33 +1,33 @@
 from DAOcarreras import DAOcarreras
 
 def menu():
-        nombre = input("Introduce una carrera:")
-        dao = DAOcarreras(nombre)
-    
+        dao = DAOcarreras(None)
+
         while True:    
-            print("<-- Menu de Carreras -->")
+            print("\n <-- Menu de Carreras --> \n")
             print("1.Crear la carrera introducida")
             print("2.Mostrar las Carreras")
             print("3.Actualizar una carrera")
             print("4.Eliminar carreras")
-            print("5.Salir")
-
+            print("5.Salir \n")
 
             opcion = int(input("Introduce una opcion:"))
         
             if opcion == 1:
-                 dao.crear_carrera()
-            elif opcion == 2: 
-                todo = dao.mostrar_carreras()
-                print(todo)
+                nombre = input("Insertar la carrera que quieras insertar:")
+                dao.crear_carrera(nombre)
+            elif opcion == 2:
+                carreras = dao.mostrar_carreras()
+                print("\n Carreras \n")
+                for carrera in carreras:
+                    print(f"Carrera:  {carrera[0]}")
             elif opcion == 3: 
                 nombre_2 = input("Introduce el nombre del cual quieres cambiar:")
                 nombre_3 = input("Introduce el nombre actual:")
-                dao_2 = DAOcarreras(nombre_2)
-                dao_2.actualizar_carrera(nombre_3)
+                dao.actualizar_carrera(nombre_3,nombre_2)
             elif opcion == 4:
                 nombre_eliminar = input("Que nombre quieres eliminar:")
-                dao_2.eliminar_carrera(nombre_eliminar)
+                dao.eliminar_carrera(nombre_eliminar)
             elif opcion == 5: 
                 break
 
