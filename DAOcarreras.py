@@ -8,7 +8,7 @@ class DAOcarreras:
             host="localhost",
             user="root",
             password="123456",
-            database="carreras"
+            database="carreras(eloyyalex)"
         )
 
         self.cursor = self.mydb.cursor()
