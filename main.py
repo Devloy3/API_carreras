@@ -1,14 +1,20 @@
 from DAOcarreras import DAOcarreras
 
 def menu():
-        dao = DAOcarreras(None)
-
+        print("Creando la conexion de base de datos:")
+        host = input("Host:")
+        user = input("User:")
+        password = input("Password:")
+        database = input("Database:")
+        dao = DAOcarreras(None,host,user,password,database)
+        
         while True:    
             print("\n <-- Menu de Carreras --> \n")
             print("1.Crear la carrera introducida")
             print("2.Mostrar las Carreras")
             print("3.Actualizar una carrera")
             print("4.Eliminar carreras")
+            print("5.Mostrar la conexion a la base de datos")
             print("5.Salir \n")
 
             opcion = int(input("Introduce una opcion:"))
@@ -29,6 +35,17 @@ def menu():
                 nombre_eliminar = input("Que nombre quieres eliminar:")
                 dao.eliminar_carrera(nombre_eliminar)
             elif opcion == 5: 
-                break
+                host_1 = dao.GetHost()
+                user_2 = dao.GetUser()
+                password_2 = dao.GetPassword()
+                database_2 = dao.GetDatabase()
+                print(f'''
+                      Host: {host_1}
+                      User: {user_2}
+                      Password: {password_2}
+                      Database: {database_2}
+                    ''')
+            elif opcion == 6:
+                 break
 
 menu()
