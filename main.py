@@ -57,7 +57,7 @@ def menu():
                 dao.setPassword(password_3)
                 dao.setDatabase(database_3)
             elif opcion == 7:
-                print("Saliendo del progrmas ....")
+                print("Saliendo del programa ....")
                 break
 
 
