@@ -2,17 +2,12 @@ import mysql.connector
 from carreras import Carreras
 
 class DAOcarreras:
-    def __init__(self,nombre,host,user,password,database):
-        self.setUser(user)
-        self.setHost(host)
-        self.setDatabase(database)
-        self.setPassword(password)
-        
+    def __init__(self,nombre):
         self.mydb = mysql.connector.connect(
-            host=self.GetHost(),
-            user=self.GetUser(),
-            password=self.GetPassword(),
-            database=self.GetDatabase()
+            host="localhost",
+            user="root",
+            password="123456",
+            database="carreras"
         )
 
         self.cursor = self.mydb.cursor()
@@ -38,29 +33,7 @@ class DAOcarreras:
         resultado = self.cursor.fetchall()
         return resultado
     
-    def setHost(self,host):
-        self.__host = host 
 
-    def setUser(self,user):
-        self.__user = user
-
-    def setPassword(self,password):
-        self.__Password = password
-
-    def setDatabase(self,database):
-        self.__database = database
-    
-    def GetHost(self):
-        return self.__host
-    
-    def GetUser(self):
-        return self.__user
-    
-    def GetPassword(self):
-        return self.__Password
-    
-    def GetDatabase(self):
-        return self.__database
     
 
     
