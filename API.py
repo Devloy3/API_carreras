@@ -21,15 +21,14 @@ class Api:
                 return jsonify({"Nombre": nombre + "creado"})
 
             @self.app.route("/modificar_carrera/<string:nombre>", methods=['PUT'])
-            def actualizar():
-                carrera = req.get_data()
-                nuevo_nombre = req.args.get("nuevo_nombre")
-                self.dao.actualizar_carrera(nuevo_nombre,carrera)
-            
-            
-                 
-                 
+            def actualizar(nombre):
+                nuevo_nombre = req.form["nuevo_nombre"]
+                self.dao.actualizar_carrera(nuevo_nombre,nombre)
 
+            @self.app.route("/eliminar/<nombre_eliminar>", methods=['DELETE'])
+            def eliminar(nombre_eliminar):
+                self.dao.eliminar_carrera(nombre_eliminar)
+                return jsonify({"Nombre": nombre_eliminar + "" + "eliminado"})
     
     def encendido(self):
         self.app.run()
