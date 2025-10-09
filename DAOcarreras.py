@@ -1,16 +1,10 @@
-import mysql.connector
 from carreras import Carreras
+from ConnexionDatabase import ConnDatabase
 
 class DAOcarreras:
-    def __init__(self,nombre="Quimica"):
-        self.mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="123456",
-            database="carreras"
-        )
-
-        self.cursor = self.mydb.cursor()
+    def __init__(self,host,user,password,database,nombre="Quimica",):
+        self.connexion = ConnDatabase(host,user,password,database)
+        self.cursor = self.connexion.mydb.cursor()
         self.nombre = Carreras(nombre)
 
     def crear_carrera(self,nombre):
