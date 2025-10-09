@@ -31,7 +31,12 @@ def menu():
             except:
                 print("Ha habido un fallo en la base de datos")
         elif opcion == 4:
-                nombre_eliminar = input("Que nombre quieres eliminar:")
+            nombre_eliminar = input("Que nombre quieres eliminar:")
+            try:
+                respuesta = req.delete(f"http://localhost:5000/eliminar/{nombre_eliminar}")
+                print(respuesta.text)
+            except:
+                print("Ha habido un fallo en la base de datos")
         elif opcion == 5:
             print("Saliendo del programa ....")
             break
