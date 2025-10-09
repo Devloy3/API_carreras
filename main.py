@@ -13,11 +13,8 @@ def menu():
         
         if opcion == 1:
             nombre = input("Insertar la carrera que quieras insertar:")
-            try: 
-                req.post("http://localhost:5000/crear_carrera", nombre=nombre)
-                print("Los datos se han guardado perfectamente")
-            except:
-                print("Ha habido un fallo en la conexion con la base de datos")
+            resp = req.post(f"http://localhost:5000/crear_carrera", data={"nombre":nombre})
+            print(resp.text)
         elif opcion == 2:
             print("\n Carreras \n")
             resp = req.get("http://localhost:5000/mostrar")
@@ -26,7 +23,7 @@ def menu():
             nombre_2 = input("Introduce el nombre del cual quieres cambiar:")
             nombre_3 = input("Introduce el nombre actual:")
             try: 
-                req.put(f"http://localhost:5000/{nombre_2}",nuevo_nombre=nombre_3)
+                req.put(f"http://localhost:5000/modificar_carrera/{nombre_2}",nuevo_nombre=nombre_3)
                 print("Carrera actualizada")
             except:
                 print("Ha habido un fallo en la base de datos")

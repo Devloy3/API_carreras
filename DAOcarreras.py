@@ -2,7 +2,7 @@ import mysql.connector
 from carreras import Carreras
 
 class DAOcarreras:
-    def __init__(self,nombre="Fisica"):
+    def __init__(self,nombre="Quimica"):
         self.mydb = mysql.connector.connect(
             host="localhost",
             user="root",
@@ -15,7 +15,7 @@ class DAOcarreras:
 
     def crear_carrera(self,nombre):
         self.nombre.setNombre(nombre)
-        self.cursor.execute('INSERT INTO carreras(nombre) VALUES (%s)', (self.nombre.getNombre(),))
+        self.cursor.execute('INSERT INTO carreras(nombre) VALUES (%s)',(self.nombre.getNombre(),))
         self.mydb.commit()
 
     def actualizar_carrera(self,nuevo_nombre,nombre_viejo):
