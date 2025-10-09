@@ -2,9 +2,9 @@ from DAOcarreras import DAOcarreras
 from flask import Flask,jsonify, request as req
 
 class Api:
-    def __init__(self):
+    def __init__(self,host,user,password,database):
         self.app = Flask(__name__)
-        self.dao = DAOcarreras()
+        self.dao = DAOcarreras(host,user,password,database)
         self.rutas()
     
     def rutas(self):
@@ -32,10 +32,12 @@ class Api:
     
     def encendido(self):
         self.app.run()
+    
 
+host = input("Host:")
+user = input("User:")
+password = input("Contrasenya:")
+database = input("Database:")
 
-
-api = Api()
+api = Api(host,user,password,database)
 api.encendido()
-            
-                  
