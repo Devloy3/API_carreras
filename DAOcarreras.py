@@ -2,7 +2,7 @@ import mysql.connector
 from carreras import Carreras
 
 class DAOcarreras:
-    def __init__(self,nombre):
+    def __init__(self,nombre="Fisica"):
         self.mydb = mysql.connector.connect(
             host="localhost",
             user="root",
