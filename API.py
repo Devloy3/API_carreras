@@ -11,7 +11,7 @@ class Api:
             @self.app.route("/mostrar", methods=['GET'])
             def mostrar():
                 datos = self.dao.mostrar_carreras()
-                carreras = [f"Carrera: {nombre[0]}" for nombre in datos]
+                carreras = [nombre[0] for nombre in datos]
                 return jsonify(carreras)
             
             @self.app.route("/crear_carrera", methods=['POST'])
@@ -25,7 +25,7 @@ class Api:
                 carrera = req.get_data()
                 nuevo_nombre = req.args.get("nuevo_nombre")
                 self.dao.actualizar_carrera(nuevo_nombre,carrera)
-
+            
             
                  
                  

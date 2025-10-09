@@ -18,7 +18,8 @@ def menu():
         elif opcion == 2:
             print("\n Carreras \n")
             resp = req.get("http://localhost:5000/mostrar")
-            print(resp.text)
+            for i in resp.json():
+                print(i)
         elif opcion == 3: 
             nombre_2 = input("Introduce el nombre del cual quieres cambiar:")
             nombre_3 = input("Introduce el nombre actual:")
