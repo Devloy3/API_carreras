@@ -32,15 +32,12 @@ class Api:
     
     def encendido(self):
         self.app.run()
-
+    
 
 host = input("Host:")
 user = input("User:")
 password = input("Contrasenya:")
 database = input("Database:")
 
-
-api = Api(host,user,password)
+api = Api(host,user,password,database)
 api.encendido()
-            
-                  

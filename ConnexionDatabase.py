@@ -1,13 +1,12 @@
 import mysql.connector
 
-
 class ConnDatabase:
     def __init__(self,host,user,password,database):
         self.setHost(host)
         self.setUser(user)
         self.setPassword(password)
         self.setDatabase(database)
-
+        
         self.mydb = mysql.connector.connect(
             host=self.getHost(),
             user=self.getUser(),
