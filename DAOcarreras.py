@@ -10,16 +10,20 @@ class DAOcarreras:
         self.carrera.setNombre(nombre)
         self.cursor.execute('INSERT INTO carreras(nombre) VALUES (%s)',(self.carrera.getNombre(),))
         self.conexion.commit()
-
+        return self.carrera.getNombre()
+    
     def actualizar_carrera(self,nuevo_nombre,idcarreras):
         self.cursor.execute('UPDATE carreras SET nombre=%s WHERE idcarreras=%s',(nuevo_nombre, idcarreras))
         self.conexion.commit()
         self.carrera.setNombre(nuevo_nombre)
+        return self.carrera.getNombre()
 
     def eliminar_carrera(self,idcarreras):
-        self.carrera.setNombre(idcarreras)
-        self.cursor.execute('DELETE FROM carreras WHERE idcarreras=%s', (idcarreras,))
-        self.conexion.commit()
+            self.carrera.setNombre(idcarreras)
+            self.cursor.execute('DELETE FROM carreras WHERE idcarreras=%s', (idcarreras,))
+            self.conexion.commit()
+        
+
 
     def mostrar_carreras(self):
         self.cursor.execute('SELECT * FROM carreras')
