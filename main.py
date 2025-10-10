@@ -25,10 +25,10 @@ def menu():
             for carrera in datos:
                 print(f"ID: {carrera['id']}  |  Nombre: {carrera['nombre']}")
         elif opcion == 3: 
-            nombre_2 = input("Introduce el ID la carrera que desea cambiar:")
+            idcarreras = input("Introduce el ID la carrera que desea cambiar:")
             nombre_3 = input("Introduce el nombre actual:")
             try: 
-                req.put(f"http://localhost:5000/modificar_carrera/{nombre_2}",data={"nuevo_nombre":nombre_3})
+                req.put(f"http://localhost:5000/modificar_carrera/{idcarreras}",data={"nuevo_nombre":nombre_3})
                 print("Carrera actualizada")
             except:
                 print("Ha habido un fallo en la base de datos")
