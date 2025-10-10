@@ -4,7 +4,7 @@ El control escolar está orientado a hacer un CRUD con carreras. Se puede borrar
 
 ## Instalación 
 
-1. Tenemos que inizializar el API, la cual nos pedirá los datos de conexión a la base de datos.
+1. Tenemos que inizializar la API, la cual nos pedirá los datos de conexión a la base de datos.
     ```
     python API.py
     ```
