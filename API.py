@@ -46,8 +46,17 @@ class Api:
     
     def encendido(self):
         self.app.run()
+    
 
+host = input("Host:")
+user = input("User:")
+password = input("Contrasenya:")
+database = input("Database:")
 
+<<<<<<< HEAD
 
 api = Api(conexion)
+=======
+api = Api(host,user,password,database)
+>>>>>>> origin
 api.encendido()

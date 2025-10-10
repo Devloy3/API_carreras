@@ -1,4 +1,5 @@
 from carreras import Carreras
+from ConnexionDatabase import ConnDatabase
 
 class DAOcarreras:
     def __init__(self, conexion):
