@@ -41,7 +41,9 @@ class Api:
 
             @self.app.route("/eliminar/<int:idcarreras>", methods=['DELETE'])
             def eliminar(idcarreras):
-                self.dao.eliminar_carrera(idcarreras)
+                eliminar = self.dao.eliminar_carrera(idcarreras)
+                return jsonify({"Eliminado": eliminar})
+
                 
     
     def encendido(self):
