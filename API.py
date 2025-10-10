@@ -25,7 +25,7 @@ class Api:
             @self.app.route("/mostrar", methods=['GET'])
             def mostrar():
                 datos = self.dao.mostrar_carreras()
-                return datos
+                return jsonify([{"id": id, "nombre": nombre} for id, nombre in datos])
             
             @self.app.route("/crear_carrera", methods=['POST'])
             def crear_carrera():
@@ -45,7 +45,7 @@ class Api:
                 if eliminar:
                      return jsonify({"Eliminado": eliminar})
                 else:
-                        return jsonify({"Error": "No se ha podido eliminar la carrera"})
+                    return jsonify({"Error": "No se ha podido eliminar la carrera"})
 
                 
     
