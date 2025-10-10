@@ -19,12 +19,6 @@ class DAOcarreras:
         return self.carrera.getNombre()
 
     def eliminar_carrera(self,idcarreras):
-            self.carrera.setNombre(idcarreras)
-            self.cursor.execute('DELETE FROM carreras WHERE idcarreras=%s', (idcarreras,))
-            self.conexion.commit()
-        
-
-    def eliminar_carrera(self,idcarreras):
         self.cursor.execute('DELETE FROM carreras WHERE idcarreras= %s', (idcarreras,))
         self.conexion.commit()
         if self.cursor.rowcount > 0:
