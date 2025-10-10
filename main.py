@@ -21,7 +21,9 @@ def menu():
         elif opcion == 2:
             print("\n Carreras \n")
             resp = req.get("http://localhost:5000/mostrar")
-            for i, nombre in resp.json():
+            datos = resp.json()
+            print(datos)
+            for i, nombre in datos:
                 print(f"ID: {i}, Carrera: {nombre}")
         elif opcion == 3: 
             id = int(input("Introduce el id del cual quieres cambiar:"))
