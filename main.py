@@ -15,7 +15,7 @@ def menu():
             nombre = input("Inserta una carrera:")
             try:
                 resp = req.post(f"http://localhost:5000/crear_carrera", data={"nombre":nombre})
-                print(resp.text)
+                print(f"La carrera {resp["Nombre"]} ha sido creado")
             except:
                 print("Ha fallado la conexion a la base de datos")
         elif opcion == 2:
@@ -28,15 +28,15 @@ def menu():
             idcarreras = input("Introduce el ID la carrera que desea cambiar:")
             nombre_3 = input("Introduce el nombre actual:")
             try: 
-                req.put(f"http://localhost:5000/modificar_carrera/{idcarreras}",data={"nuevo_nombre":nombre_3})
-                print("Carrera actualizada")
+                respuesta = req.put(f"http://localhost:5000/modificar_carrera/{idcarreras}",data={"nuevo_nombre":nombre_3})
+                print(f"Ha sido actualizado por {respuesta["Nombre"]} ")
             except:
                 print("Ha habido un fallo en la base de datos")
         elif opcion == 4:
             nombre_eliminar = input("Introduce el ID que quieres eliminar:")
             try:
                 respuesta = req.delete(f"http://localhost:5000/eliminar/{nombre_eliminar}")
-                print(respuesta.text)
+                print(f"Se ha eliminado correctamente {respuesta["Eliminado"]}")
             except:
                 print("Ha habido un fallo en la base de datos")
         elif opcion == 5:
