@@ -24,8 +24,6 @@ class DAOcarreras:
             self.conexion.commit()
         
 
-<<<<<<< HEAD
-=======
     def eliminar_carrera(self,nombre_eliminar):
         self.carrera.setNombre(nombre_eliminar)
         self.cursor.execute('DELETE FROM carreras WHERE nombre= %s', (self.carrera.getNombre(),))
@@ -34,7 +32,6 @@ class DAOcarreras:
             return True
         else:
             return False
->>>>>>> origin
 
     def mostrar_carreras(self):
         self.cursor.execute('SELECT * FROM carreras')
