@@ -26,11 +26,12 @@ class Api:
             def mostrar():
                 datos = self.dao.mostrar_carreras()
                 carreras = [nombre[0] for nombre in datos]
+                return carreras
             
             @self.app.route("/crear_carrera", methods=['POST'])
             def crear_carrera():
-                idcarreras = req.form["id"]
-                nombre = self.dao.crear_carrera(idcarreras)
+                nombre = req.form["nombre"]
+                nombre = self.dao.crear_carrera(nombre)
                 return jsonify({"Nombre": nombre + " " + "creado"})
 
             @self.app.route("/modificar_carrera/<int:idcarreras>", methods=['PUT'])
