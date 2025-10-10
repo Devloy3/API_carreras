@@ -1,10 +1,24 @@
 from DAOcarreras import DAOcarreras
+from connexionDB import ConexionDB
 from flask import Flask,jsonify, request as req
 
+host = input("Introduzca el host de la base de datos (localhost por defecto):")
+user = input("Introduzca el usuario de la base de datos (root por defecto):")
+password = input("Introduzca la contraseña de la base de datos (123456 por defecto):")
+database = input("Introduzca el nombre de la base de datos (carreras por defecto):")
+
+if host == "" and user == "" and password == "" and database == "":
+     conexion = ConexionDB().conectar()
+
+else:
+     conexion = ConexionDB(host,user,password,database).conectar()
+
+
 class Api:
-    def __init__(self):
+
+    def __init__(self, conexion):
         self.app = Flask(__name__)
-        self.dao = DAOcarreras()
+        self.dao = DAOcarreras(conexion)
         self.rutas()
     
     def rutas(self):
@@ -35,7 +49,5 @@ class Api:
 
 
 
-api = Api()
+api = Api(conexion)
 api.encendido()
-            
-                  
