@@ -29,8 +29,8 @@ class Api:
             
             @self.app.route("/crear_carrera", methods=['POST'])
             def crear_carrera():
-                idcarreras = req.form["id"]
-                nombre = self.dao.crear_carrera(idcarreras)
+                nombre = req.form["nombre"]
+                nombre = self.dao.crear_carrera(nombre)
                 return jsonify({"Nombre": nombre + " " + "creado"})
 
             @self.app.route("/modificar_carrera/<int:idcarreras>", methods=['PUT'])

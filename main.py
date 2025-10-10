@@ -12,7 +12,7 @@ def menu():
         opcion = int(input("Introduce una opcion:"))
         
         if opcion == 1:
-            nombre = input("Introduce el nombre de la carrera que quieras insertar:")
+            nombre = input("Inserta una carrera:")
             try:
                 resp = req.post(f"http://localhost:5000/crear_carrera", data={"nombre":nombre})
                 print(resp.text)
