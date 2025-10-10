@@ -25,8 +25,7 @@ class Api:
             @self.app.route("/mostrar", methods=['GET'])
             def mostrar():
                 datos = self.dao.mostrar_carreras()
-                carreras = [nombre[0] for nombre in datos]
-                return carreras
+                return datos
             
             @self.app.route("/crear_carrera", methods=['POST'])
             def crear_carrera():
