@@ -4,24 +4,24 @@ class DAOcarreras:
     def __init__(self, conexion):
         self.conexion = conexion
         self.cursor = conexion.cursor()
-        self.carrera = Carreras("")
+        self.carrera = Carreras(None)
 
     def crear_carrera(self,nombre):
         self.carrera.setNombre(nombre)
         self.cursor.execute('INSERT INTO carreras(nombre) VALUES (%s)',(self.carrera.getNombre(),))
         self.conexion.commit()
 
-    def actualizar_carrera(self,nuevo_nombre,nombre_viejo):
-        self.carrera.setNombre(nombre_viejo)
-        self.cursor.execute('UPDATE carreras SET nombre= %s WHERE nombre=%s',(nuevo_nombre, self.carrera.getNombre()))
+    def actualizar_carrera(self,nuevo_nombre,idcarreras):
+        self.cursor.execute('UPDATE carreras SET nombre=%s WHERE idcarreras=%s',(nuevo_nombre, idcarreras))
         self.conexion.commit()
+        self.carrera.setNombre(nuevo_nombre)
 
-    def eliminar_carrera(self,nombre_eliminar):
-        self.carrera.setNombre(nombre_eliminar)
-        self.cursor.execute('DELETE FROM carreras WHERE nombre= %s', (self.carrera.getNombre(),))
+    def eliminar_carrera(self,idcarreras):
+        self.carrera.setNombre(idcarreras)
+        self.cursor.execute('DELETE FROM carreras WHERE idcarreras=%s', (idcarreras,))
         self.conexion.commit()
 
     def mostrar_carreras(self):
-        self.cursor.execute('SELECT nombre FROM carreras')
+        self.cursor.execute('SELECT * FROM carreras')
         resultado = self.cursor.fetchall()
         return resultado
