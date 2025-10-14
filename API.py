@@ -31,13 +31,13 @@ class Api:
             def crear_carrera():
                 nombre = req.form["nombre"]
                 nombre = self.dao.crear_carrera(nombre)
-                return jsonify({"Nombre": nombre + " " + "creado"})
+                return jsonify({"Nombre": nombre })
 
             @self.app.route("/modificar_carrera/<int:idcarreras>", methods=['PUT'])
             def actualizar(idcarreras):
                 nuevo_nombre = req.form["nuevo_nombre"]
                 nombre = self.dao.actualizar_carrera(nuevo_nombre,idcarreras)
-                return jsonify ({"Nombre": nombre + " " + "actualizado" })
+                return jsonify ({"Nombre": nombre })
 
             @self.app.route("/eliminar/<int:idcarreras>", methods=['DELETE'])
             def eliminar(idcarreras):
